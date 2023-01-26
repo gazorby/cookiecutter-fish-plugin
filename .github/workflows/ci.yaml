@@ -38,9 +38,12 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-          cache: poetry
       - uses: fish-actions/install-fish@v1.1.0
       - uses: Gr1N/setup-poetry@v8
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install
       - name: Bare Metal ${{ matrix.script.name }}
