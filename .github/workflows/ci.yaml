@@ -38,6 +38,15 @@ jobs:
         with:
           python-version: "3.10"
       - uses: fish-actions/install-fish@v1.1.0
+      - name: Install Fisher plugin manager
+        uses: fish-shop/install-plugin-manager@v1
+        with:
+          plugin-manager: fisher
+      - name: Install fishtape
+        uses: fish-shop/install-plugin@v1
+        with:
+          plugin-manager: fisher
+          plugins: jorgebucaran/fishtape
       - uses: Gr1N/setup-poetry@v8
       - uses: actions/cache@v3
         with:
