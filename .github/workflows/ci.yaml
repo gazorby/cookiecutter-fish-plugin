@@ -24,12 +24,12 @@ jobs:
       fail-fast: false
       matrix:
         script:
-          - name: Basic profile
+          - name: Basic
             args: "--directory=profile_basic"
-          - name: Abbreviations profile
+          - name: Abbreviations
             args: "--directory=profile_abbreviations"
 
-    name: "${{ matrix.script.name }} tests"
+    name: "${{ matrix.script.name }} profile tests"
     runs-on: ubuntu-latest
 
     steps:
@@ -46,6 +46,6 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Basic tests for ${{ matrix.script.name }} profile
-        run: fish tests/test_basic.fish ${{ matrix.script.args }}
+        run: poetry run fish tests/test_basic.fish ${{ matrix.script.args }}
       - name: Fisher tests for ${{ matrix.script.name }} profile
-        run: fish tests/test_fisher.fish ${{ matrix.script.args }}
+        run: poetry run fish tests/test_fisher.fish ${{ matrix.script.args }}
