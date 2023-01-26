@@ -46,5 +46,7 @@ jobs:
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install
-      - name: Bare Metal ${{ matrix.script.name }}
-        run: sh tests/test_bare.sh ${{ matrix.script.args }}
+      - name: Basic tests for ${{ matrix.script.name }} profile
+        run: sh tests/test_basic.sh ${{ matrix.script.args }}
+      - name: Fisher tests for ${{ matrix.script.name }} profile
+        run: sh tests/test_fisher.sh ${{ matrix.script.args }}
