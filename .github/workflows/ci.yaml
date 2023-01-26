@@ -16,21 +16,20 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-          cache: pip
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
 
-  bare:
+  tests:
     strategy:
       fail-fast: false
       matrix:
         script:
-          - name: Basic profile
-            args: "--directory=profile_basic"
-          - name: Abbreviations profile
-            args: "--directory=profile_abbreviations"
+          - name: Basic
+            args: "--directory=plugin_basic"
+          - name: Abbreviations
+            args: "--directory=plugin_abbreviations"
 
-    name: "${{ matrix.script.name }} Bare metal"
+    name: "${{ matrix.script.name }} plugin tests"
     runs-on: ubuntu-latest
 
     steps:
@@ -38,10 +37,24 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-          cache: poetry
       - uses: fish-actions/install-fish@v1.1.0
+      - name: Install Fisher plugin manager
+        uses: fish-shop/install-plugin-manager@v1
+        with:
+          plugin-manager: fisher
+      - name: Install fishtape
+        uses: fish-shop/install-plugin@v1
+        with:
+          plugin-manager: fisher
+          plugins: jorgebucaran/fishtape
       - uses: Gr1N/setup-poetry@v8
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install
-      - name: Bare Metal ${{ matrix.script.name }}
-        run: sh tests/test_bare.sh ${{ matrix.script.args }}
+      - name: Basic tests
+        run: poetry run fish tests/test_basic.fish ${{ matrix.script.args }}
+      - name: Fisher tests
+        run: poetry run fish tests/test_fisher.fish ${{ matrix.script.args }}
