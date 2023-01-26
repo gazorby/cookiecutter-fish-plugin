@@ -23,12 +23,12 @@ jobs:
         uses: fish-shop/install-plugin@v1
         with:
           plugin-manager: fisher
-          plugins: {{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+          plugins: ./
 
       - name: Run Fishtape tests
         uses: fish-shop/run-fishtape-tests@v1
         with:
-          pattern: tests/**.fish
+          pattern: tests/test**.fish
         # timeout in case tests get stuck on fzf
         timeout-minutes: 3
 
