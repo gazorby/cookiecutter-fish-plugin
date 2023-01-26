@@ -25,11 +25,11 @@ jobs:
       matrix:
         script:
           - name: Basic
-            args: "--directory=profile_basic"
+            args: "--directory=plugin_basic"
           - name: Abbreviations
-            args: "--directory=profile_abbreviations"
+            args: "--directory=plugin_abbreviations"
 
-    name: "${{ matrix.script.name }} profile tests"
+    name: "${{ matrix.script.name }} plugin tests"
     runs-on: ubuntu-latest
 
     steps:
@@ -45,7 +45,7 @@ jobs:
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install
-      - name: Basic tests for ${{ matrix.script.name }} profile
+      - name: Basic tests
         run: poetry run fish tests/test_basic.fish ${{ matrix.script.args }}
-      - name: Fisher tests for ${{ matrix.script.name }} profile
+      - name: Fisher tests
         run: poetry run fish tests/test_fisher.fish ${{ matrix.script.args }}
