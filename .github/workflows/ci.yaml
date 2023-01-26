@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: pip
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.0
+
+  bare:
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - name: Basic profile
+            args: "--directory=profile_basic"
+          - name: Abbreviations profile
+            args: "--directory=profile_abbreviations"
+
+    name: "${{ matrix.script.name }} Bare metal"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: poetry
+      - uses: fish-actions/install-fish@v1.1.0
+      - uses: Gr1N/setup-poetry@v8
+      - name: Install dependencies
+        run: poetry install
+      - name: Bare Metal ${{ matrix.script.name }}
+        run: sh tests/test_bare.sh ${{ matrix.script.args }}

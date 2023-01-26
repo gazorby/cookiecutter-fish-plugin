@@ -4,3 +4,4 @@ function _{{ cookiecutter.project_slug }}_abbr -d "Create {{ cookiecutter.projec
     abbr -a $name $body
     set -a __{{ cookiecutter.project_slug }}_abbreviations $name
 end
+

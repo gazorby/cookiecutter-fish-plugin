@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cookiecutter-fish-plugin"
+version = "0.1.0"
+description = "Fisher plugin boilerplate"
+authors = ["gazorby <gazorby@pm.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+cookiecutter = "^2.1.1"
+
+[tool.poetry.group.dev.dependencies]
+black = { version = "^22.1.0", allow-prereleases = true }
+pytest = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

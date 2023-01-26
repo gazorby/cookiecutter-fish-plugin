@@ -1,11 +1,11 @@
 {
   "author_name": "Daniel Roy Greenfeld",
   "github_username": "gazorby",
-  "repo_name": "fish-abbr",
-  "description": "Behold My Awesome Project!",
-  "project_name": "fish-abbreviation",
+  "repo_name": "fish-plug",
+  "description": "My Awesome fish plugin!",
+  "project_name": "fish-plug",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-  "project_short_description": "Fisher plugin Boilerplate contains all the boilerplate you need to create an abbreviation/alias plugin.",
+  "project_short_description": "Fisher plugin Boilerplate contains all the boilerplate you need to create a fish plugin.",
   "version": "0.1.0",
   "open_source_license": [
     "MIT license",
