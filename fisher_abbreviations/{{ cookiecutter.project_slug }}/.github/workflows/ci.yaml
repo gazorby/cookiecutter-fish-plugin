@@ -1,1 +1,1 @@
-../../../../plugin_basic/{{ cookiecutter.project_slug }}/.github/workflows/ci.yaml
+../../../../fisher_basic/{{ cookiecutter.project_slug }}/.github/workflows/ci.yaml

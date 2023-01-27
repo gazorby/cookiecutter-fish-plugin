@@ -1,1 +1,1 @@
-../../plugin_basic/{{ cookiecutter.project_slug }}/README.md
+../../fisher_basic/{{ cookiecutter.project_slug }}/README.md

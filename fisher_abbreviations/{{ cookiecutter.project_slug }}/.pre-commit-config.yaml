@@ -1,1 +1,1 @@
-../../plugin_basic/{{ cookiecutter.project_slug }}/.pre-commit-config.yaml
+../../fisher_basic/{{ cookiecutter.project_slug }}/.pre-commit-config.yaml
