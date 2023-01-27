@@ -6,7 +6,8 @@
   "project_name": "fish-plug",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Fisher plugin Boilerplate contains all the boilerplate you need to create a fish plugin.",
-  "ci_tool": ["None", "Github"],
+  "ci_tool": ["None", "github"],
+  "use_precommit": "y",
   "version": "0.1.0",
   "open_source_license": [
     "MIT license",
