@@ -1,4 +1,4 @@
-exclude: "plugin_basic|plugin_abbreviations"
+exclude: "fisher_basic|fisher_abbreviations"
 default_language_version:
   python: python3.10
 
