@@ -5,6 +5,7 @@ end
 function _{{ cookiecutter.project_slug }}_update --on-event {{ cookiecutter.project_slug }}_update
     _{{ cookiecutter.project_slug }}_uninstall
     _{{ cookiecutter.project_slug }}_install
+    _{{ cookiecutter.project_slug }}_init
 end
 
 function _{{ cookiecutter.project_slug }}_uninstall --on-event {{ cookiecutter.project_slug }}_uninstall
